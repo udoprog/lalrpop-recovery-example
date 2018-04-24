@@ -1,0 +1,21 @@
+// vim: ft=rust
+use lexer;
+use ast;
+
+grammar<'input>;
+
+pub Rule: ast::Rule<'input> = {
+    <a:A> => ast::Rule::A(a),
+    <b:B> => ast::Rule::B(b),
+    <e:!> => ast::Rule::Error(e.dropped_tokens),
+};
+
+extern {
+    type Location = usize;
+    type Error = lexer::Error;
+
+    enum lexer::Token<'input> {
+        A => lexer::Token::A(<&'input str>),
+        B => lexer::Token::B(<&'input str>),
+    }
+}

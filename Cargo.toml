@@ -1,0 +1,10 @@
+[package]
+name = "lalrpop-recovery-example"
+version = "0.1.0"
+authors = ["John-John Tedro <udoprog@tedro.se>"]
+
+[dependencies]
+lalrpop-util = "0.15"
+
+[build-dependencies]
+lalrpop = "0.15"
